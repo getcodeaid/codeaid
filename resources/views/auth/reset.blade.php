@@ -7,11 +7,8 @@
                 <div class="panel panel-login">
                     <div class="panel-heading">
                         <div class="row">
-                            <div class="col-xs-6">
-                                <a href="/auth/login" id="login-form-link">Login</a>
-                            </div>
-                            <div class="col-xs-6">
-                                <a href="#" class="active" id="register-form-link">Register</a>
+                            <div class="col-xs-12">
+                                <h3 id="login-form-link">Change Password</h3>
                             </div>
                         </div>
                         <hr>
@@ -19,25 +16,23 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-12">
-                                <form id="register-form" action="/auth/register" method="post" role="form">
+                                <form id="login-form" action="/password/reset" method="post" role="form">
                                     {!! csrf_field() !!}
+                                    <input type="hidden" name="token" value="{{ $token }}">
                                     @include('_formerrors')
                                     <div class="form-group">
-                                        <input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="Display Name" value="{{ old('name') }}">
+                                        <input type="text" name="email" id="email" tabindex="1" class="form-control" placeholder="Email" value="{{ old('email') }}">
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="{{ old('email') }}">
+                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="New Password">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" name="password_confirmation" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
+                                        <input type="password" name="password_confirmation" id="password_confirmation" tabindex="3" class="form-control" placeholder="Confirm New Password">
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-sm-6 col-sm-offset-3">
-                                                <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+                                                <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Change">
                                             </div>
                                         </div>
                                     </div>

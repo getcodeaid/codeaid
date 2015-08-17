@@ -6,7 +6,7 @@ body {
   box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2); }
 
 .panel-login > .panel-heading {
-  color: #7270D1;
+  color: #ccc;
   background-color: #fff;
   border-color: #fff;
   text-align: center; }
@@ -17,6 +17,9 @@ body {
   font-weight: bold;
   font-size: 18px;
   transition: all 0.1s linear; }
+
+.panel-login > .panel-heading h3 {
+  color: #7270D1; }
 
 .panel-login > .panel-heading a.active {
   color: #7270D1;
