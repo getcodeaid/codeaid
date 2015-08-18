@@ -42,3 +42,16 @@
         </div>
     </div>
 @stop
+
+@section('custom_scripts')
+    @if(Session::has('status'))
+        <script type="text/javascript">
+            swal({
+                title: "Sent!",
+                text: "Your reset email has been sent!",
+                type: "success",
+                showConfirmButton: false
+            });
+        </script>
+    @endif
+@stop
