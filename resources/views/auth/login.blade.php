@@ -1,6 +1,8 @@
 @extends('_layout')
 
-
+@section('title')
+    Log In
+@stop
 
 @section('content')
     <div class="row">
