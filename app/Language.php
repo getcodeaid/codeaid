@@ -6,12 +6,12 @@ use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class Thread extends Model implements SluggableInterface
+class Language extends Model implements SluggableInterface
 {
     use SluggableTrait;
 
     protected $sluggable = [
-        'build_from' => 'title',
+        'build_from' => 'name',
         'save_to'    => 'slug',
     ];
 }

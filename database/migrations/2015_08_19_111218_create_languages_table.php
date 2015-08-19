@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateThreadsTable extends Migration
+class CreateLanguagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,20 +12,19 @@ class CreateThreadsTable extends Migration
      */
     public function up()
     {
-        Schema::create('threads', function (Blueprint $table) {
+        Schema::create('languages', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('user_id')->unsigned();
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->boolean('verified')->default(false);
 
-            $table->string('title');
+            $table->string('ace_name');
+            $table->string('highlighter_name');
 
             $table->string('slug');
 
             $table->timestamps();
-        });
-
-        Schema::table('threads', function (Blueprint $table){
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -36,6 +35,6 @@ class CreateThreadsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('threads');
+        Schema::drop('languages');
     }
 }
