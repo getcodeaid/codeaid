@@ -18,6 +18,6 @@ elixir(function(mix) {
     mix.styles([
         'vendor/whiteplum.css'
     ]);
-    mix.scripts('app.js');
+    mix.scripts(['app.js', 'createSnip.js'], 'public/js/app.js');
     mix.version(['public/js/app.js', 'public/css/app.css', 'public/css/all.css']);
 });

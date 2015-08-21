@@ -17,9 +17,9 @@ class CreateRepliesTable extends Migration
 
             $table->integer('thread_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->longText('content')->nullable();
+            $table->longText('code')->nullable();
 
-            $table->longText('comment')->nullable();
+            $table->longText('message')->nullable();
 
             $table->timestamps();
         });
@@ -37,6 +37,6 @@ class CreateRepliesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('snips');
+        Schema::drop('replies');
     }
 }

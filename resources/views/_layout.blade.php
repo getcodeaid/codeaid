@@ -33,11 +33,14 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Project name</a>
+            <a class="navbar-brand" href="#"><i class="fa fa-life-ring"></i> CodeAid</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="/">Home</a></li>
+                <li><a href="/s/create">Create Snip</a></li>
+                <li><a href="/l">Languages</a></li>
+                <li><a href="/help">Help</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
@@ -55,8 +58,9 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="{{ elixir('js/app.js') }}"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.0/sweetalert.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/parsley.js/2.1.2/parsley.min.js"></script>
 @yield('custom_scripts')
 </body>
+<script src="{{ elixir('js/app.js') }}"></script>
 </html>

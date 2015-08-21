@@ -91,4 +91,13 @@ body {
 body {
   padding-top: 80px; }
 
+#editor {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 98%;
+  margin: auto;
+  height: 400px; }
+
 /*# sourceMappingURL=app.css.map */
