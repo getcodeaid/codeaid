@@ -17,6 +17,7 @@ class CreateThreadsTable extends Migration
 
             $table->string('title');
             $table->integer('language_id')->unsigned();
+            $table->string('slug');
 
             $table->timestamps();
         });

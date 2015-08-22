@@ -44,7 +44,7 @@ $(snipCreateButton).on('click', function(){
     $(this).prop('disabled', true);
     $(this).html('<i class="fa fa-refresh fa-spin"></i> Creating Snip...');
 
-    var submission = [];
+    var submission = {};
     var tokenField = $('input[name=_token]');
     submission['title'] = getField('title').val();
     submission['message'] = getField('message').val();
@@ -53,19 +53,19 @@ $(snipCreateButton).on('click', function(){
     submission['language_id'] = getField('language').val();
     submission['_token'] =  tokenField.val();
 
-    console.log(submission);
+    console.log(typeof submission);
 
     $.ajax({
         url: '/s',
         type: 'POST',
-        contentType: 'application/json',
-        data: {submission:submission},
+        contentType: "application/x-www-form-urlencoded",
+        data: submission,
         headers: {
             'X-CSRF-Token': tokenField.val()
         },
         success: function(data, textStatus ){
-            var returnData = JSON.parse(data.responseText);
-            window.location.replace('/s/' + returnData.slug);
+            window.location.replace("/s/" + data.slug);
+
         },
         error: function(data, textStatus, errorThrown){
             if (data.status == 422) {
@@ -79,4 +79,3 @@ $(snipCreateButton).on('click', function(){
         }
     });
 });
-

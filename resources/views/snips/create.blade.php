@@ -39,16 +39,16 @@
                         <div class="form-group">
                             <select class="form-control" id="field-language">
                                 <option selected disabled>Select Language</option>
-                                <option value="1" data-ace-name="python" >Python</option>
-                                <option value="2" data-ace-name="javascript">JavaScript</option>
-                                <option>4</option>
-                                <option>5</option>
+                                @foreach($languages as $language)
+                                    <option value="{{ $language->id }}" data-ace-name="{{ $language->ace_name }}">{{ $language->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <select class="form-control" id="field-category">
                             <option selected disabled>Select Category</option>
-                            <option value="1">Help Needed</option>
-                            <option value="2">Tutorial</option>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
                         </select>
                         <hr>
                         <div class="form-group">

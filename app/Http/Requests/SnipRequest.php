@@ -25,9 +25,9 @@ class SnipRequest extends Request
     {
         return [
             'title' => 'required',
-            'language_id' => 'exists:languages|required',
-            'content' => 'required',
-            'comment' => 'required'
+            'language_id' => 'exists:languages,id|required',
+            'code' => 'required',
+            'message' => 'required'
         ];
     }
 }

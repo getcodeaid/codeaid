@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Http\Requests\SnipRequest;
+use App\Language;
 use App\Reply;
 use App\Thread;
 use Illuminate\Http\Request;
@@ -12,6 +14,11 @@ use App\Http\Controllers\Controller;
 
 class SnipController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -29,7 +36,7 @@ class SnipController extends Controller
      */
     public function create()
     {
-        return view('snips.create');
+        return view('snips.create')->with(['categories' => Category::all(), 'languages' => Language::all()]);
     }
 
     /**
