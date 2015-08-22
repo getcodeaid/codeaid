@@ -1,6 +1,8 @@
 var editor = ace.edit("editor");
 editor.setTheme("ace/theme/monokai");
 
+var snipCreateButton = $( "#snipcreatebutton" );
+
 function getField(name)
 {
     return $( "#field-" + name );
@@ -10,6 +12,8 @@ function showErrors(errors)
 {
     var errorText;
     var errorLocation = $( "#errors" );
+
+    $(errorLocation).html('');
 
     errors = JSON.parse(errors);
 
@@ -34,18 +38,20 @@ $( getField('language') ).change(function() {
 
 });
 
-$( '#snipcreatebutton' ).on('click', function(){
+$(snipCreateButton).on('click', function(){
+    var originalText = $(this).html();
     editor.setReadOnly(true);
     $(this).prop('disabled', true);
     $(this).html('<i class="fa fa-refresh fa-spin"></i> Creating Snip...');
 
     var submission = [];
+    var tokenField = $('input[name=_token]');
     submission['title'] = getField('title').val();
     submission['message'] = getField('message').val();
     submission['code'] = editor.getValue();
     submission['category_id'] = getField('category').val();
     submission['language_id'] = getField('language').val();
-    submission['_token'] =  $('input[name=_token]').val();
+    submission['_token'] =  tokenField.val();
 
     console.log(submission);
 
@@ -55,14 +61,21 @@ $( '#snipcreatebutton' ).on('click', function(){
         contentType: 'application/json',
         data: {submission:submission},
         headers: {
-            'X-CSRF-Token': $('input[name=_token]').val()
+            'X-CSRF-Token': tokenField.val()
         },
         success: function(data, textStatus ){
             var returnData = JSON.parse(data.responseText);
             window.location.replace('/s/' + returnData.slug);
         },
         error: function(data, textStatus, errorThrown){
-            showErrors(data.responseText);
+            if (data.status == 422) {
+                showErrors(data.responseText);
+            }else{
+                showErrors(['An unknown error occurred, please try again later']);
+            }
+            editor.setReadOnly(false);
+            $(snipCreateButton).prop('disabled', false);
+            $(snipCreateButton).html(originalText);
         }
     });
 });
