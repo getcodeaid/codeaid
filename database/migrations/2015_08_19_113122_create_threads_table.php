@@ -17,6 +17,7 @@ class CreateThreadsTable extends Migration
 
             $table->string('title');
             $table->integer('language_id')->unsigned();
+            $table->integer('category_id')->unsigned();
             $table->string('slug');
 
             $table->timestamps();
@@ -24,6 +25,7 @@ class CreateThreadsTable extends Migration
 
         Schema::table('threads', function(Blueprint $table){
             $table->foreign('language_id')->references('id')->on('languages')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 

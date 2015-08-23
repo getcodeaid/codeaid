@@ -18,6 +18,7 @@ elixir(function(mix) {
     mix.styles([
         'vendor/whiteplum.css'
     ]);
-    mix.scripts(['app.js', 'createSnip.js'], 'public/js/app.js');
-    mix.version(['public/js/app.js', 'public/css/app.css', 'public/css/all.css']);
+    mix.scripts(['app.js', 'renderSnip.js'], 'public/js/app.js');
+    mix.scripts('createSnip.js', 'public/js/createSnip.js');
+    mix.version(['public/js/app.js', 'public/css/app.css', 'public/css/all.css', 'public/js/createSnip.js']);
 });

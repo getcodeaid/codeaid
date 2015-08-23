@@ -8,7 +8,6 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
         "zizaco/entrust": "dev-laravel-5",
-        "barryvdh/laravel-debugbar": "^2.0",
         "cviebrock/eloquent-sluggable": "^3.0"
     },
     "require-dev": {

@@ -19,7 +19,9 @@ class CreateRepliesTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->longText('code')->nullable();
 
-            $table->longText('message')->nullable();
+            $table->longText('message');
+
+            $table->boolean('modification');
 
             $table->timestamps();
         });

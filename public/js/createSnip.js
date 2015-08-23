@@ -1,4 +1,3 @@
-
 var editor = ace.edit("editor");
 editor.setTheme("ace/theme/monokai");
 
@@ -80,4 +79,4 @@ $(snipCreateButton).on('click', function(){
         }
     });
 });
-//# sourceMappingURL=app.js.map
+//# sourceMappingURL=createSnip.js.map

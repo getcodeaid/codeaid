@@ -52,9 +52,11 @@ class SnipController extends Controller
 
         $thread->title = $request->title;
         $thread->language_id = $request->language_id;
+        $thread->category_id = $request->category_id;
         $reply->user_id = user()->id;
         $reply->code = $request->code;
         $reply->message = $request->message;
+        $reply->modification = true;
 
         $thread->save();
         $reply->thread_id = $thread->id;
@@ -69,9 +71,10 @@ class SnipController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $thread = Thread::findBySlugOrFail($slug);
+        return view('snips.show')->with(compact('thread'));
     }
 
     /**
