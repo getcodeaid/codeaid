@@ -21,4 +21,6 @@ function showErrors(errors) {
     $('html, body').animate({scrollTop: 0}, 'slow');
     errorLocation.fadeIn();
 }
+
+hljs.initHighlightingOnLoad();
 //# sourceMappingURL=app.js.map

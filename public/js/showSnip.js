@@ -17,3 +17,5 @@ modificationButton.click(function(){
     modificationPanel.fadeIn();
     $("html, body").animate({ scrollTop: $(document).height() }, "slow");
 });
+
+//# sourceMappingURL=showSnip.js.map
