@@ -55,6 +55,13 @@
                 </div>
                 <div class="panel-body">
                     <div id="editor"></div>
+                    <hr>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">Message</label>
+                        <textarea id="field-message" class="form-control" rows="3"></textarea>
+                        <p class="help-block">A brief summary of what you changed</p>
+                    </div>
+                    <button class="btn btn-primary btn-block" id="submitModificationButton"><i class="fa fa-plus"></i> Create</button>
                 </div>
             </div>
         </div>
