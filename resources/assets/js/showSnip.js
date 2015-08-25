@@ -15,5 +15,4 @@ commentButton.click(function(){
 modificationButton.click(function(){
     commentPanel.hide();
     modificationPanel.fadeIn();
-    $("html, body").animate({ scrollTop: $(document).height() }, "slow");
 });
