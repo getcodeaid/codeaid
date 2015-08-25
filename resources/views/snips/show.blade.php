@@ -12,7 +12,12 @@
     @foreach ($thread->replies as $reply)
         <div class="row">
             <div class="col-md-1">
-                <img src="{{ $reply->owner->avatar() }}" alt="User Avatar" class="img-circle">
+                <div class="row">
+                    <img src="{{ $reply->owner->avatar() }}" alt="User Avatar" class="img-circle img-responsive avatar">
+                </div>
+                <div class="row">
+                    <h3 class="text-center"><a href="/vote/{{ $reply->id }}/up"><i class="fa fa-angle-up text-success"></i></a> 12 <a href="/vote/{{ $reply->id }}/down"><i class="fa fa-angle-down"></i></a></h3>
+                </div>
             </div>
             <div class="col-md-11">
                 <div class="panel panel-default">
