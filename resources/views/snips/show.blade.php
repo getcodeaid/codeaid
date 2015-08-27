@@ -15,9 +15,11 @@
                 <div class="row">
                     <img src="{{ $reply->owner->avatar() }}" alt="User Avatar" class="img-circle img-responsive avatar">
                 </div>
+                @if(user() != null)
                 <div class="row">
-                    <h3 class="text-center"><a href="/vote/{{ $reply->id }}/up"><i class="fa fa-angle-up text-success"></i></a> 12 <a href="/vote/{{ $reply->id }}/down"><i class="fa fa-angle-down"></i></a></h3>
+                    <h3 class="text-center" id="vote-{{ $reply->id }}"><span class="text-primary vote" data-id="{{ $reply->id }}" data-type="up"><i class="fa fa-angle-up"></i></span> <span class="score">{{ $reply->voteCount() }}</span> <span class="vote text-primary" data-id="{{ $reply->id }}" data-type="down"><i class="fa fa-angle-down"></i></span></h3>
                 </div>
+                @endif
             </div>
             <div class="col-md-11">
                 <div class="panel panel-default">

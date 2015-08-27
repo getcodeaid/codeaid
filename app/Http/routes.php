@@ -21,6 +21,9 @@ Route::post('s', 'SnipController@store');
 
 Route::get('s/{slug}', 'SnipController@show');
 
+Route::get('/vote/{id}/score', 'VoteController@score');
+Route::get('/vote/{id}/{type}', 'VoteController@vote');
+
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
