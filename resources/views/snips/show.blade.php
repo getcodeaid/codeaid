@@ -17,7 +17,7 @@
                 </div>
                 @if(user() != null)
                 <div class="row">
-                    <h3 class="text-center" id="vote-{{ $reply->id }}"><span class="text-primary vote" data-id="{{ $reply->id }}" data-type="up"><i class="fa fa-angle-up"></i></span> <span class="score">{{ $reply->voteCount() }}</span> <span class="vote text-primary" data-id="{{ $reply->id }}" data-type="down"><i class="fa fa-angle-down"></i></span></h3>
+                    <h3 class="text-center" id="vote-{{ $reply->id }}"><span class="text-primary vote" data-id="{{ $reply->id }}" data-type="up"><i class="fa fa-angle-up @if($reply->userVote()->type == "+") text-success @endif"></i></span> <span class="score">{{ $reply->voteCount() }}</span> <span class="vote text-primary" data-id="{{ $reply->id }}" data-type="down"><i class="fa fa-angle-down @if($reply->userVote()->type == "-") text-danger @endif"></i></span></h3>
                 </div>
                 @endif
             </div>
