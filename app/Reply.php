@@ -44,4 +44,14 @@ class Reply extends Model
 
         return $score;
     }
+
+    /**
+     * Get the user's vote
+     *
+     * @return object
+     */
+    public function userVote()
+    {
+        return $this->votes()->where('user_id', user()->id)->first();
+    }
 }
