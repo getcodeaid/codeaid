@@ -16,4 +16,32 @@ class Reply extends Model
     {
         return $this->belongsTo('App\User', 'user_id');
     }
+
+    /**
+     * A Reply has many votes
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function votes()
+    {
+        return $this->hasMany('App\Vote', 'reply_id');
+    }
+
+    /**
+     * Calculate the Reply's vote count
+     *
+     * @return float
+     */
+    public function voteCount()
+    {
+        /** @var int $up */
+        $up = $this->votes()->where('type', '+')->count();
+        /** @var int $down */
+        $down = $this->votes()->where('type', '-')->count();
+
+        /** @var float $score */
+        $score = $up - $down;
+
+        return $score;
+    }
 }
