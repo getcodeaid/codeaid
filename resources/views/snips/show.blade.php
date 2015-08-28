@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-md-1">
                 <div class="row">
-                    <img src="{{ $reply->owner->avatar() }}" alt="User Avatar" class="img-circle img-responsive avatar">
+                    <img src="{{ $reply->owner->avatar() }}" alt="User Avatar" class="img-rounded img-responsive avatar">
                 </div>
                 @if(Auth::check())
                 <div class="row">
