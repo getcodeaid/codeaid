@@ -7,6 +7,7 @@ use App\Http\Requests\SnipRequest;
 use App\Language;
 use App\Reply;
 use App\Thread;
+use App\Vote;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -49,6 +50,7 @@ class SnipController extends Controller
     {
         $thread = new Thread;
         $reply = new Reply;
+        $vote = new Vote;
 
         $thread->title = $request->title;
         $thread->language_id = $request->language_id;
@@ -61,6 +63,11 @@ class SnipController extends Controller
         $thread->save();
         $reply->thread_id = $thread->id;
         $reply->save();
+
+        $vote->type = "+";
+        $vote->user_id = user()->id;
+        $vote->reply_id = $reply->id;
+        $vote->save();
 
         return $thread;
     }

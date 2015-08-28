@@ -22,6 +22,11 @@ class CreateVotesTable extends Migration
 
             $table->timestamps();
         });
+
+        Schema::table('votes', function(Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('reply_id')->references('id')->on('replies')->onDelete('cascade');
+        });
     }
 
     /**
