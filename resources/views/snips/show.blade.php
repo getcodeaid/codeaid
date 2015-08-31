@@ -92,4 +92,7 @@
 @section('custom_scripts')
     <script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ace.js" type="text/javascript"></script>
     <script src="{{ elixir('js/showSnip.js') }}" type="text/javascript"></script>
+    <script>
+        editor.getSession().setMode("ace/mode/" + "{{ $thread->language->ace_name }}");
+    </script>
 @stop
