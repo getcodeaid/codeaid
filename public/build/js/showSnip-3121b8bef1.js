@@ -52,11 +52,13 @@ function displayVote(voteElement, voteType, replyId){
 commentButton.click(function(){
     modificationPanel.hide();
     commentPanel.fadeIn()
+    getField("message").focus();
 });
 
 modificationButton.click(function(){
     commentPanel.hide();
     modificationPanel.fadeIn();
+    editor.focus();
 });
 
 $( ".vote" ).click(function(){

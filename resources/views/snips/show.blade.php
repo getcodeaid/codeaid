@@ -59,7 +59,7 @@
                     Comment
                 </div>
                 <div class="panel-body">
-                    <p>Comment</p>
+                    <textarea id="field-message" rows="3" class="form-control"></textarea>
                 </div>
             </div>
             <div class="panel panel-default" id="panel-modification" style="display:none;">
@@ -71,7 +71,7 @@
                     <hr>
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-2 control-label">Message</label>
-                        <textarea id="field-message" class="form-control" rows="3"></textarea>
+                        <textarea id="field-modification-message" class="form-control" rows="3"></textarea>
                         <p class="help-block">A brief summary of what you changed</p>
                     </div>
                     <hr>
