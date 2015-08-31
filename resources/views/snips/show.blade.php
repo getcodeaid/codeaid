@@ -74,6 +74,13 @@
                         <textarea id="field-message" class="form-control" rows="3"></textarea>
                         <p class="help-block">A brief summary of what you changed</p>
                     </div>
+                    <hr>
+                    <div class="panel panel-info">
+                        <div class="panel-body">
+                            <a href="http://help.codeaid.xyz/guide/updating-snips.html" target="_blank">When will my changes be accepted?</a>
+                        </div>
+                    </div>
+                    <hr>
                     <button class="btn btn-primary btn-block" id="submitModificationButton"><i class="fa fa-plus"></i> Create</button>
                 </div>
             </div>
