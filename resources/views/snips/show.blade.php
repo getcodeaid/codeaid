@@ -78,8 +78,14 @@
                     </div>
                     <hr>
                     <div class="panel panel-info">
+                        <div class="panel-heading">
+                            When will my changes be accepted?
+                        </div>
                         <div class="panel-body">
-                            <a href="http://help.codeaid.xyz/guide/updating-snips.html" target="_blank">When will my changes be accepted?</a>
+                            Your changes will be accepted when the author marks them as accepted, or the community votes positively.
+                        </div>
+                        <div class="panel-footer">
+                            <a href="http://help.codeaid.xyz/guide/updating-snips.html" target="_blank">More Details <sup><i class="fa fa-external-link"></i></sup></a>
                         </div>
                     </div>
                     <hr>
