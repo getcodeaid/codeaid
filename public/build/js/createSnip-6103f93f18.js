@@ -75,10 +75,12 @@ $(snipCreateButton).on('click', function(){
                     case 401:
                         errorText = "Unauthorised! Your login session may have expired";
                         break;
-                    case 500:
-                        errorText = ""
+                    default:
+                        errorText = "An unknown error occured. Please try again later.";
+                        break;
+
                 }
-                showErrors(JSON.stringify(["An unknown error occurred, please try again later"]));
+                showErrors(JSON.stringify([errorText]));
             }
             editor.setReadOnly(false);
             restoreButton(createButton, prevText);
