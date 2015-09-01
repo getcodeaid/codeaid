@@ -39,10 +39,10 @@ $( getField('language') ).change(function() {
 });
 
 $(snipCreateButton).on('click', function(){
-    var originalText = $(this).html();
+    var createButton = $(this);
     editor.setReadOnly(true);
     $(this).prop('disabled', true);
-    $(this).html('<i class="fa fa-refresh fa-spin"></i> Creating Snip...');
+    var prevText = loadingButton($(this),"Creating Snip...")
 
     var submission = {};
     var tokenField = $('input[name=_token]');
