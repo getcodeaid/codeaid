@@ -61,7 +61,7 @@
                 <div class="panel-body">
                     <textarea id="field-message" rows="3" class="form-control"></textarea>
                     <hr>
-                    <button class="btn btn-primary btn-block" id="submitModificationButton"><i class="fa fa-plus"></i> Create</button>
+                    <button class="btn btn-primary btn-block" id="btn-comment-submit"><i class="fa fa-plus"></i> Create</button>
                 </div>
             </div>
             <div class="panel panel-default" id="panel-modification" style="display:none;">
@@ -89,7 +89,7 @@
                         </div>
                     </div>
                     <hr>
-                    <button class="btn btn-primary btn-block" id="submitModificationButton"><i class="fa fa-plus"></i> Create</button>
+                    <button class="btn btn-primary btn-block" id="btn-modification-submit"><i class="fa fa-plus"></i> Create</button>
                 </div>
             </div>
         </div>
