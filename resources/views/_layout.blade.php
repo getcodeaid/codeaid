@@ -41,7 +41,7 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/s/create">Create Snip</a></li>
                 <li><a href="/l">Languages</a></li>
-                <li><a href="/help">Help</a></li>
+                <li><a href="http://help.codeaid.xyz" target="_blank">Help</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
