@@ -7,6 +7,9 @@ var modificationButton = $( "#btn-modification" );
 var commentPanel = $( "#panel-comment" );
 var modificationPanel = $( "#panel-modification" );
 
+var commentSubmitButton = $( "#btn-comment-submit" );
+var modificationSubmitButton = $( "#btn-modification-submit" );
+
 function changeScore(data, status, voteElement){
     var scoreText = voteElement.find(".score");
     console.log(data);
@@ -59,6 +62,14 @@ modificationButton.click(function(){
     commentPanel.hide();
     modificationPanel.fadeIn();
     editor.focus();
+});
+
+commentSubmitButton.click(function(){
+    var messageField = getField("message");
+});
+
+modificationButton.click(function(){
+
 });
 
 $( ".vote" ).click(function(){

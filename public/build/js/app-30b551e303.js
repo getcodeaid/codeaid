@@ -22,5 +22,17 @@ function showErrors(errors) {
     errorLocation.fadeIn();
 }
 
+function loadingButton(button, text) {
+    var prevText = button.html();
+    button.prop('disabled', true);
+    button.html("<i class=\"fa fa-refresh fa-spin\"></i> " + text);
+    return prevText;
+}
+
+function restoreButton(button, text) {
+    button.prop('disabled', false);
+    button.html(text);
+}
+
 hljs.initHighlightingOnLoad();
 //# sourceMappingURL=app.js.map

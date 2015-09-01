@@ -53,8 +53,6 @@ $(snipCreateButton).on('click', function(){
     submission['language_id'] = getField('language').val();
     submission['_token'] =  tokenField.val();
 
-    console.log(typeof submission);
-
     $.ajax({
         url: '/s',
         type: 'POST',
@@ -71,11 +69,19 @@ $(snipCreateButton).on('click', function(){
             if (data.status == 422) {
                 showErrors(data.responseText);
             }else{
-                showErrors(['An unknown error occurred, please try again later']);
+                var errorText;
+
+                switch (data.status){
+                    case 401:
+                        errorText = "Unauthorised! Your login session may have expired";
+                        break;
+                    case 500:
+                        errorText = ""
+                }
+                showErrors(JSON.stringify(["An unknown error occurred, please try again later"]));
             }
             editor.setReadOnly(false);
-            $(snipCreateButton).prop('disabled', false);
-            $(snipCreateButton).html(originalText);
+            restoreButton(createButton, prevText);
         }
     });
 });
