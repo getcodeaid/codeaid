@@ -23,6 +23,8 @@ class CreateRepliesTable extends Migration
 
             $table->boolean('modification');
 
+            $table->boolean('accepted')->default(false);
+
             $table->timestamps();
         });
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Http\Requests\ReplyRequest;
 use App\Http\Requests\SnipRequest;
 use App\Language;
 use App\Reply;
@@ -84,27 +85,55 @@ class SnipController extends Controller
         return view('snips.show')->with(compact('thread'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
+
+    public function reply($slug, Request $request)
     {
-        //
+        if ($request->modification == "true") {
+            // Validation rules for modification
+            $this->validate($request, [
+                'code' => 'required',
+                'message' => 'required',
+            ]);
+        } elseif ($request->modification == "false"){
+            // Validation rules for comment
+            $this->validate($request, [
+                'message' => 'required',
+            ]);
+        } else {
+            // Type is incorrect or missing
+            abort(404);
+        }
+
+        $thread = Thread::findBySlugOrFail($slug);
+        $reply = new Reply;
+        $reply->message = $request->message;
+        if ($request->modification == "true"){
+            $reply->modification = true;
+            $reply->code = $request->code;
+        }else{
+            $reply->modification = false;
+        }
+        $reply->thread_id = $thread->id;
+        $reply->user_id = user()->id;
+        $reply->save();
+        return $reply;
     }
 
     /**
-     * Update the specified resource in storage.
+     * Mark a reply as accepted
      *
-     * @param  Request  $request
-     * @param  int  $id
-     * @return Response
+     * @param $id Reply Id
      */
-    public function update(Request $request, $id)
+    public function accept($id)
     {
-        //
+        $reply = Reply::findOrFail($id);
+        if ($reply->user_id == user()->id) {
+            $reply->accepted = true;
+            $reply->save();
+            return $reply;
+        } else {
+            return abort(403);
+        }
     }
 
     /**
