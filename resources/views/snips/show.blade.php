@@ -24,7 +24,7 @@
             <div class="col-md-11">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <p><a href="/u/{{ $thread->firstPost()->owner->slug }}"><span class="text-muted">by {{ $reply->owner->name }} {{ $reply->created_at->diffForHumans() }}</span></a> <span class="text-warning" data-toggle="tooltip" data-placement="right" title="Unaccepted modification"><i class="fa fa-pencil-square"></i></span></p>
+                        <p><a href="/u/{{ $thread->firstPost()->owner->slug }}"><span class="text-muted">by {{ $reply->owner->name }} {{ $reply->created_at->diffForHumans() }}</span></a> {!!  $reply->badges() !!}</p>
                         <p>{{ $reply->message }}</p>
                         @if($reply->code != null)
                             <pre><code class="{{ $thread->language->highlighter_name }}">{{ $reply->code }}</code></pre>
