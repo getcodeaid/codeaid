@@ -17,14 +17,14 @@
                 </div>
                 @if(Auth::check())
                 <div class="row">
-                    <h3 class="text-center" id="vote-{{ $reply->id }}"><span class="text-primary vote" data-id="{{ $reply->id }}" data-type="up"><i class="fa fa-angle-up @if($reply->userVote()->type == "+") text-success @endif"></i></span> <span class="score">{{ $reply->voteCount() }}</span> <span class="vote text-primary" data-id="{{ $reply->id }}" data-type="down"><i class="fa fa-angle-down @if($reply->userVote()->type == "-") text-danger @endif"></i></span></h3>
+                    <h3 class="text-center" id="vote-{{ $reply->id }}"><span class="text-primary vote" data-id="{{ $reply->id }}" data-type="up"><i class="fa fa-angle-up @if($reply->userVote() != null AND $reply->userVote()->type == "+") text-success @endif"></i></span> <span class="score">{{ $reply->voteCount() }}</span> <span class="vote text-primary" data-id="{{ $reply->id }}" data-type="down"><i class="fa fa-angle-down @if($reply->userVote() != null AND $reply->userVote()->type == "-") text-danger @endif"></i></span></h3>
                 </div>
                 @endif
             </div>
             <div class="col-md-11">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <a href="/u/{{ $thread->firstPost()->owner->slug }}"><p class="text-muted">by {{ $reply->owner->name }} {{ $reply->created_at->diffForHumans() }}</p></a>
+                        <p><a href="/u/{{ $thread->firstPost()->owner->slug }}"><span class="text-muted">by {{ $reply->owner->name }} {{ $reply->created_at->diffForHumans() }}</span></a> <span class="text-warning" data-toggle="tooltip" data-placement="right" title="Unaccepted modification"><i class="fa fa-pencil-square"></i></span></p>
                         <p>{{ $reply->message }}</p>
                         @if($reply->code != null)
                             <pre><code class="{{ $thread->language->highlighter_name }}">{{ $reply->code }}</code></pre>
@@ -39,7 +39,7 @@
         <div class="col-md-2"></div>
         @if(Auth::check())
         <div class="col-md-4">
-            <button class="btn btn-primary btn-block btn-lg" id="btn-comment"><i class="fa fa-commenting"></i> Comment</button>
+            <button class="btn btn-primary btn-block btn-lg" id="btn-comment"><i class="fa fa-comment"></i> Comment</button>
         </div>
         <div class="col-md-4">
             <button class="btn btn-primary btn-block btn-lg" id="btn-modification"><i class="fa fa-pencil"></i> Modify</button>
@@ -95,6 +95,8 @@
         </div>
 
     </div>
+    {{ csrf_field() }}
+    <input type="hidden" id="field-slug" value="{{ $thread->slug }}">
 @stop
 
 @section('custom_scripts')
@@ -102,5 +104,9 @@
     <script src="{{ elixir('js/showSnip.js') }}" type="text/javascript"></script>
     <script>
         editor.getSession().setMode("ace/mode/" + "{{ $thread->language->ace_name }}");
+        $( document ).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+            console.log('a');
+        });
     </script>
 @stop
