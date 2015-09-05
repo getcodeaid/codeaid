@@ -52,6 +52,42 @@ function displayVote(voteElement, voteType, replyId){
 
 }
 
+function submitReply(data){
+    $.ajax({
+        url: "/s/" + data["slug"] + "/reply",
+        type: 'POST',
+        contentType: "application/x-www-form-urlencoded",
+        data: data,
+        headers: {
+            'X-CSRF-Token': data["_token"]
+        },
+        success: function(data, textStatus ){
+            location.reload();
+
+        },
+        error: function(data, textStatus, errorThrown){
+            if (data.status == 422) {
+                showErrors(data.responseText);
+            }else{
+                var errorText;
+
+                switch (data.status){
+                    case 401:
+                        errorText = "Unauthorised! Your login session may have expired";
+                        break;
+                    default:
+                        errorText = "An unknown error occured. Please try again later.";
+                        break;
+
+                }
+                showErrors(JSON.stringify([errorText]));
+            }
+            editor.setReadOnly(false);
+            restoreButton(createButton, prevText);
+        }
+    });
+}
+
 commentButton.click(function(){
     modificationPanel.hide();
     commentPanel.fadeIn()
@@ -65,12 +101,28 @@ modificationButton.click(function(){
 });
 
 commentSubmitButton.click(function(){
-    var messageField = getField("message");
+    console.log("comment submit");
+    var submission = {};
+    submission["_token"] = $('input[name=_token]').val();
+    submission["message"] = getField("message").val();
+    submission["modification"] = false;
+    submission["slug"] = getField("slug").val();
+
+    submitReply(submission);
 });
 
-modificationButton.click(function(){
+modificationSubmitButton.click(function(){
+    var submission = {};
+    console.log("modification submit");
+    submission["_token"] = $('input[name=_token]').val();
+    submission["code"] = editor.getValue();
+    submission["message"] = getField("modification-message").val();
+    submission["modification"] = true;
+    submission["slug"] = getField("slug").val();
 
+    submitReply(submission);
 });
+
 
 $( ".vote" ).click(function(){
     var voteButton = $(this);
