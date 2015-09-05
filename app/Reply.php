@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Reply extends Model
 {
@@ -52,6 +53,10 @@ class Reply extends Model
      */
     public function userVote()
     {
-        return $this->votes()->where('user_id', user()->id)->first();
+        if(Auth::check()) {
+            return $this->votes()->where('user_id', user()->id)->first();
+        }else{
+            return null;
+        }
     }
 }
