@@ -59,4 +59,21 @@ class Reply extends Model
             return null;
         }
     }
+
+    public function badges()
+    {
+        $badges = "";
+
+        if ($this->modification) {
+            $badges .= "<span class=\"label label-success\"><i class=\"fa fa-pencil\"></i> Modification</span> ";
+
+            if ($this->accepted) {
+                $badges .= "<span class=\"label label-success\">Accepted</span> ";
+            } else {
+                $badges .= "<span class=\"label label-danger\">Unaccepted</span> ";
+            }
+        }
+
+        return $badges;
+    }
 }
