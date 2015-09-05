@@ -19,6 +19,8 @@ Route::get('/', 'SnipController@index');
 Route::get('s/create', 'SnipController@create');
 Route::post('s', 'SnipController@store');
 
+Route::post('s/{slug}/reply', 'SnipController@reply');
+Route::post('/accept/{id}', 'SnipController@accept');
 Route::get('s/{slug}', 'SnipController@show');
 
 Route::get('/vote/{id}/score', 'VoteController@score');
